@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 /*
  * Copyright (c) 2019 Amlogic, Inc. All rights reserved.
-*
-* sibondt
-*/
+ *
+ * sibondt
+ */
 
 /dts-v1/;
 
@@ -12,7 +12,7 @@
 #include "meson-sc2.dtsi"
 
 / {
-	model = "Amlogic ✧ s905x4";
+	model = "Advan Ax810 ✧ s905x4";
 	compatible = "amlogic,sc2";
 	interrupt-parent = <&gic>;
 	#address-cells = <2>;
@@ -80,6 +80,7 @@
 		regulator-name = "VBUS_PWR";
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
+//		vin-supply = <&vcc_5v>;
 
 		gpio = <&gpio GPIOH_6 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
@@ -181,7 +182,7 @@
 		compatible = "amlogic,cpufreq-meson";
 		status = "okay";
 	};
-
+	
 	i2c-led {
 		compatible = "i2c-gpio";
 		sda-gpios = <&gpio GPIOA_14 GPIO_ACTIVE_HIGH>;
@@ -414,6 +415,8 @@
 
 	bus-width = <4>;
 	cap-sd-highspeed;
+	sd-uhs-sdr50;
+	sd-uhs-ddr50;
 	sd-uhs-sdr104;
 	max-frequency = <200000000>;
 
@@ -470,7 +473,7 @@
 &ethmac {
 	status = "okay";
 	phy-handle = <&internal_ephy>;
-	phy-mode = "rgmii";
+	phy-mode = "rmii";
 };
 
 &spicc0 {
